@@ -22,9 +22,6 @@
   }
 
   function requireAccount() {
-    const email = accountEmail();
-    if (email) return email;
-    alert("Create an account or log in first.");
     location.href = "login.html";
     return "";
   }
