@@ -2,21 +2,6 @@
   const podcastGrid = document.querySelector("#podcastGrid");
   if (!podcastGrid) return;
 
-  function embedList(podcast) {
-    const embeds = [
-      ["YouTube", podcast.youtubeEmbedUrl || (podcast.platform === "YouTube" ? podcast.embedUrl : "")],
-      ["Spotify", podcast.spotifyEmbedUrl || (podcast.platform === "Spotify" ? podcast.embedUrl : "")],
-      ["Apple Music", podcast.appleMusicEmbedUrl || (podcast.platform === "Apple Music" ? podcast.embedUrl : "")]
-    ].filter(([, url]) => url);
-
-    return embeds.map(([label, url]) => `
-      <div class="embedBlock">
-        <p class="eyebrow">${label}</p>
-        <iframe src="${url}" title="${podcast.title} on ${label}" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    `).join("");
-  }
-
   function linkList(podcast) {
     const links = [
       ["YouTube", podcast.youtubeEmbedUrl || (podcast.platform === "YouTube" ? podcast.embedUrl : "")],
@@ -38,7 +23,6 @@
             <h3>${podcast.title}</h3>
             <p class="podcastDescription">${podcast.description}</p>
             ${linkList(podcast)}
-            <div class="podcastEmbeds">${embedList(podcast)}</div>
           </div>
         </div>
       </article>
